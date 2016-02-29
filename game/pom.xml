@@ -9,6 +9,23 @@
 
   <name>game</name>
   <url>http://maven.apache.org</url>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>org.ccm.maven.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,4 +39,11 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <repositories>
+    <repository>
+      <id>gdx-nightlies</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
 </project>
