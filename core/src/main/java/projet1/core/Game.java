@@ -24,7 +24,7 @@ public class Game implements ApplicationListener {
 	public void render () {
 		batch.begin();
 		batch.draw(texture, 0, 0);
-		batch.draw(new Texture(Gdx.files.internal("0020.png")),200,500);
+		batch.draw(new Texture(Gdx.files.internal("0020.png")),100,100);
 		batch.end();
 	}
 
@@ -38,5 +38,7 @@ public class Game implements ApplicationListener {
 
 	@Override
 	public void dispose () {
+		texture.dispose();
+		batch.dispose();
 	}
 }
