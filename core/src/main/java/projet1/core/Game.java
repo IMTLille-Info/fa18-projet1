@@ -1,19 +1,25 @@
 package projet1.core;
 
-import com.badlogic.gdx.graphics.GL30;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 
+
 public class Game implements ApplicationListener {
-	Texture texture;
-	SpriteBatch batch;
+	private Texture texture;
+	private SpriteBatch batch;
+	private Hero hero;
+	private InputKeyboard inputKeyboard;
 
 	@Override
 	public void create () {
 		texture = new Texture(Gdx.files.internal("map01.png"));
 		batch = new SpriteBatch();
+		hero = new Hero(100,100);
+		inputKeyboard = new InputKeyboard(this.hero);
+		Gdx.input.setInputProcessor(inputKeyboard);
 	}
 
 	@Override
@@ -24,7 +30,7 @@ public class Game implements ApplicationListener {
 	public void render () {
 		batch.begin();
 		batch.draw(texture, 0, 0);
-		batch.draw(new Texture(Gdx.files.internal("0020.png")),100,100);
+		batch.draw(this.hero.display(),this.hero.get_x() ,this.hero.get_y());
 		batch.end();
 	}
 
@@ -41,4 +47,5 @@ public class Game implements ApplicationListener {
 		texture.dispose();
 		batch.dispose();
 	}
+	
 }
