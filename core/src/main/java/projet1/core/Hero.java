@@ -1,6 +1,7 @@
 package projet1.core;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Hero {
@@ -34,20 +35,20 @@ public class Hero {
 		this._y = y;
 	}
 	
-	public void moveforward(){
-		this._y++;
+	public void moveforward(boolean isGoing){
+		if(isGoing)this._y++;
 	}
 	
-	public void moveBack(){
-		this._y--;
+	public void moveBack(boolean isGoing){
+		if(isGoing)this._y--;
 	}
 	
-	public void moveRight(){
-		this._x++;
+	public void moveRight(boolean isGoing){
+		if(isGoing)this._x++;
 	}
 	
-	public void moveLeft(){
-		this._x--;
+	public void moveLeft(boolean isGoing){
+		if(isGoing)this._x--;
 	}
 
 }

@@ -20,6 +20,7 @@ public class Game implements ApplicationListener {
 		hero = new Hero(100,100);
 		inputKeyboard = new InputKeyboard(this.hero);
 		Gdx.input.setInputProcessor(inputKeyboard);
+		System.out.println("create");
 	}
 
 	@Override
