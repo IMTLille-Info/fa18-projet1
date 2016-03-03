@@ -1,5 +1,6 @@
 package projet1.core;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
@@ -14,6 +15,9 @@ public class InputKeyboard implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode){
+		case Keys.ESCAPE :
+			Gdx.app.exit();
+			break;
 		case Keys.UP : 
 			this.hero.setUpMove(true);
 			break;

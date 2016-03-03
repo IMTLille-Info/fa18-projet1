@@ -11,12 +11,14 @@ public class Hero {
 	private Texture _texture; //image du personnage
 	private Sprite _sprite;
 	boolean movingLeft, movingRight, movingUp, movingDown;
+	int i;
 	
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._texture = new Texture(Gdx.files.internal("0020.png"));
+		this._texture = new Texture(Gdx.files.internal("viking/0020.png"));
 		this._sprite = new Sprite(this._texture);
+		this.i=0;
 	}
 	
 	public void draw(SpriteBatch batch){
@@ -28,12 +30,15 @@ public class Hero {
 	public void updateMotion(){
 		if(movingLeft){
 			this._x -= 100 * Gdx.graphics.getDeltaTime();
+			
 		}
 		if(movingRight){
 			this._x += 100 * Gdx.graphics.getDeltaTime();
 		}
 		if(movingUp){
 			this._y += 100 * Gdx.graphics.getDeltaTime();
+			this.i = (this.i+1)%5;
+	        this._texture = new Texture(Gdx.files.internal("viking/002"+i+".png"));
 		}
 		if(movingDown){
 			this._y -= 100 * Gdx.graphics.getDeltaTime();
