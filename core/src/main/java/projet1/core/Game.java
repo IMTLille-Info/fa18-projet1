@@ -31,7 +31,7 @@ public class Game implements ApplicationListener {
 	public void render () {
 		batch.begin();
 		batch.draw(texture, 0, 0);
-		batch.draw(this.hero.display(),this.hero.get_x() ,this.hero.get_y());
+		this.hero.draw(batch);
 		batch.end();
 	}
 

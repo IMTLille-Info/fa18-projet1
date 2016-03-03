@@ -15,40 +15,38 @@ public class InputKeyboard implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		switch(keycode){
 		case Keys.UP : 
-			this.hero.moveforward(true);
-			return true;
+			this.hero.setUpMove(true);
+			break;
 		case Keys.DOWN : 
-			this.hero.moveBack(true);
-			return true;
+			this.hero.setDownMove(true);
+			break;
 		case Keys.LEFT : 
-			this.hero.moveLeft(true);
-			return true;
+			this.hero.setLeftMove(true);
+			break;
 		case Keys.RIGHT : 
-			this.hero.moveRight(true);
-			return true;
-		default:
-			return false;
-		}		
+			this.hero.setRightMove(true);
+			break;
+		}
+		return true;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
 		switch(keycode){
 		case Keys.UP : 
-			this.hero.moveforward(false);
-			return true;
+			this.hero.setUpMove(false);
+			break;
 		case Keys.DOWN : 
-			this.hero.moveBack(false);
-			return true;
+			this.hero.setDownMove(false);
+			break;
 		case Keys.LEFT : 
-			this.hero.moveLeft(false);
-			return true;
+			this.hero.setLeftMove(false);
+			break;
 		case Keys.RIGHT : 
-			this.hero.moveRight(false);
-			return true;
-		default:
-			return false;
+			this.hero.setRightMove(false);
+			break;
 		}
+		return true;
 	}
 
 	@Override
