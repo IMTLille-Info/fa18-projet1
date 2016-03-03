@@ -15,16 +15,16 @@ public class InputKeyboard implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		switch(keycode){
 		case Keys.UP : 
-			this.hero.moveforward();
+			this.hero.moveforward(true);
 			return true;
 		case Keys.DOWN : 
-			this.hero.moveBack();
+			this.hero.moveBack(true);
 			return true;
 		case Keys.LEFT : 
-			this.hero.moveLeft();
+			this.hero.moveLeft(true);
 			return true;
 		case Keys.RIGHT : 
-			this.hero.moveRight();
+			this.hero.moveRight(true);
 			return true;
 		default:
 			return false;
@@ -33,8 +33,22 @@ public class InputKeyboard implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
+		switch(keycode){
+		case Keys.UP : 
+			this.hero.moveforward(false);
+			return true;
+		case Keys.DOWN : 
+			this.hero.moveBack(false);
+			return true;
+		case Keys.LEFT : 
+			this.hero.moveLeft(false);
+			return true;
+		case Keys.RIGHT : 
+			this.hero.moveRight(false);
+			return true;
+		default:
+			return false;
+		}
 	}
 
 	@Override
