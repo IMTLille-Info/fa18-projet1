@@ -16,7 +16,7 @@ public class Hero {
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._texture = new Texture(Gdx.files.internal("viking/0020.png"));
+		this._texture = new Texture(Gdx.files.internal("./viking/0020.png"));
 		this._sprite = new Sprite(this._texture);
 		this.i=0;
 	}
@@ -37,12 +37,15 @@ public class Hero {
 		}
 		if(movingUp){
 			this._y += 100 * Gdx.graphics.getDeltaTime();
-			this.i = (this.i+1)%5;
-	        this._texture = new Texture(Gdx.files.internal("viking/002"+i+".png"));
+			this.i = (this.i + 1)%5;
+			String path = "./viking/002"+this.i+".png";			
+	        this._texture = new Texture(Gdx.files.internal(path));
 		}
 		if(movingDown){
 			this._y -= 100 * Gdx.graphics.getDeltaTime();
 		}
+		this._sprite = new Sprite(this._texture);
+		
 	}
 
 	public void setRightMove(boolean t)
