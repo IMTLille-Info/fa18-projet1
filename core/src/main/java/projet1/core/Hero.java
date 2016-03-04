@@ -34,34 +34,34 @@ public class Hero {
 		if(movingLeft){
 			this._x -= 70 * Gdx.graphics.getDeltaTime();
 			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5;
 				String path = "./viking/007"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
+		        this.i = (this.i + 1)%5;
 			}
 		}
 		if(movingRight){
 			this._x += 100 * Gdx.graphics.getDeltaTime();
-			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5;
+			if(this.vitesseMovement%8 == 0){				
 				String path = "./viking/001"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
+		        this.i = (this.i + 1)%5;
 			}
 		}
 		if(movingUp){
 			this._y += 100 * Gdx.graphics.getDeltaTime();
 			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5;
 				String path = "./viking/002"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
+		        this.i = (this.i + 1)%5;
 			}
 				
 		}
 		if(movingDown){
 			this._y -= 50 * Gdx.graphics.getDeltaTime();
 			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5;
 				String path = "./viking/000"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
+		        this.i = (this.i + 1)%5;
 			}
 		}
 		if(!(movingLeft || movingRight || movingUp || movingDown))
