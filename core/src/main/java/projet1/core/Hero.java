@@ -32,9 +32,10 @@ public class Hero {
 	public void updateMotion(){
 		this.vitesseMovement++;
 		
+		this.i %= 5;
 		// déplacement du personnage
 		if(movingLeft){
-			this._x -= 70 * Gdx.graphics.getDeltaTime();
+			this._x -= 50 * Gdx.graphics.getDeltaTime();
 		}
 		if(movingRight){
 			this._x += 100 * Gdx.graphics.getDeltaTime();
@@ -87,7 +88,7 @@ public class Hero {
 		if(movingUp && movingLeft){ // déplacement vers Nord-Ouest
 			if(this.vitesseMovement%8 == 0){
 				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/001"+this.i+".png";			
+				String path = "./viking/009"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
 		}
@@ -101,7 +102,7 @@ public class Hero {
 		if(movingDown && movingLeft){ // déplacement vers Sud-Ouest
 			if(this.vitesseMovement%8 == 0){
 				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/001"+this.i+".png";			
+				String path = "./viking/008"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
 		}
