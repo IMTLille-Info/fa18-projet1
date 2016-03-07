@@ -31,24 +31,38 @@ public class Hero {
 
 	public void updateMotion(){
 		this.vitesseMovement++;
+		
+		// déplacement du personnage
 		if(movingLeft){
 			this._x -= 70 * Gdx.graphics.getDeltaTime();
+		}
+		if(movingRight){
+			this._x += 100 * Gdx.graphics.getDeltaTime();
+		}
+		if(movingUp){
+			this._y += 100 * Gdx.graphics.getDeltaTime();
+		}
+		if(movingDown){
+			this._y -= 50 * Gdx.graphics.getDeltaTime();
+		}
+		
+		
+		// affichage du personnage selon ses déplacements
+		if(movingLeft && !movingUp && !movingDown){ // déplacement vers Ouest
 			if(this.vitesseMovement%8 == 0){
 				String path = "./viking/007"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
 		}
-		if(movingRight){
-			this._x += 100 * Gdx.graphics.getDeltaTime();
+		if(movingRight && !movingUp && !movingDown){ // déplacement vers Est			
 			if(this.vitesseMovement%8 == 0){				
 				String path = "./viking/001"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
 		}
-		if(movingUp){
-			this._y += 100 * Gdx.graphics.getDeltaTime();
+		if(movingUp && !movingLeft && !movingRight){ // déplacement vers Nord			
 			if(this.vitesseMovement%8 == 0){
 				String path = "./viking/002"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
@@ -56,15 +70,44 @@ public class Hero {
 			}
 				
 		}
-		if(movingDown){
-			this._y -= 50 * Gdx.graphics.getDeltaTime();
+		if(movingDown && !movingLeft && !movingRight){ // déplacement vers Sud			
 			if(this.vitesseMovement%8 == 0){
 				String path = "./viking/000"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
 		}
-		if(!(movingLeft || movingRight || movingUp || movingDown))
+		if(movingUp && movingRight){ // déplacement vers Nord-Est
+			if(this.vitesseMovement%8 == 0){
+				this.i = (this.i + 1)%5 + 5;
+				String path = "./viking/001"+this.i+".png";			
+		        this._texture = new Texture(Gdx.files.internal(path));		        
+			}
+		}
+		if(movingUp && movingLeft){ // déplacement vers Nord-Ouest
+			if(this.vitesseMovement%8 == 0){
+				this.i = (this.i + 1)%5 + 5;
+				String path = "./viking/001"+this.i+".png";			
+		        this._texture = new Texture(Gdx.files.internal(path));		        
+			}
+		}
+		if(movingDown && movingRight){ // déplacement vers Sud-Est
+			if(this.vitesseMovement%8 == 0){
+				this.i = (this.i + 1)%5 + 5;
+				String path = "./viking/000"+this.i+".png";			
+		        this._texture = new Texture(Gdx.files.internal(path));		        
+			}
+		}
+		if(movingDown && movingLeft){ // déplacement vers Sud-Ouest
+			if(this.vitesseMovement%8 == 0){
+				this.i = (this.i + 1)%5 + 5;
+				String path = "./viking/001"+this.i+".png";			
+		        this._texture = new Texture(Gdx.files.internal(path));		        
+			}
+		}
+		
+		
+		if(!(movingLeft || movingRight || movingUp || movingDown)) // position statique
 			this._texture = new Texture(Gdx.files.internal("./viking/0020.png"));
 		
 		this._sprite = new Sprite(this._texture);
