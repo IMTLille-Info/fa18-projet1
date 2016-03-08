@@ -1,18 +1,16 @@
 package projet1.core;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader.Config;
 
-public class Hero {
-	
-	private int _x,_y; //coordonnées du personnage
-	private Texture _texture; //image du personnage
-	private Sprite _sprite;
-	boolean movingLeft, movingRight, movingUp, movingDown;
-	int i;
-	int vitesseMovement;
+
+
+public class Hero extends Creature{
+	private LwjglApplicationConfiguration config;
 	
 	public Hero(int x, int y){
 		this._x = x;
@@ -21,18 +19,22 @@ public class Hero {
 		this._sprite = new Sprite(this._texture);
 		this.i=0;
 		this.vitesseMovement = 0;
+		config = new LwjglApplicationConfiguration();
+		
 	}
 	
 	public void draw(SpriteBatch batch){
-		this.updateMotion();
+		this.Move();
 		this._sprite.setPosition(_x, _y);
 		this._sprite.draw(batch);
 	}
 
-	public void updateMotion(){
+	public void Move(){
+		
 		this.vitesseMovement++;
 		
 		this.i %= 5;
+		
 		// déplacement du personnage
 		if(movingLeft){
 			this._x -= 50 * Gdx.graphics.getDeltaTime();
@@ -46,6 +48,7 @@ public class Hero {
 		if(movingDown){
 			this._y -= 50 * Gdx.graphics.getDeltaTime();
 		}
+		
 		
 		
 		// affichage du personnage selon ses déplacements
@@ -113,30 +116,76 @@ public class Hero {
 		
 		this._sprite = new Sprite(this._texture);
 		
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @param key : clockwise => 3 for right 
+	 * 							 6 for down
+	 * 							 9 for left
+	 * 							 12 for Up
+	 * @return
+	 */
+	public boolean Stop(int key){
+		if(key == 3){
+		if(this._x<this.config.width - 50) return false;
+		}
+		if(key == 6){
+			if(this._y>0) return false;
+			}
+		if(key == 9){
+			if(this._x>0) return false;
+			}
+		if(key == 12){
+			if(this._y<this.config.height-50) return false;
+			}
+		return true;
 	}
 
 	public void setRightMove(boolean t)
-    {
-        if(movingLeft && t) movingLeft = false;
-        movingRight = t;
+    {	
+		if(!Stop(3)){
+			if(movingLeft && t ) movingLeft = false;
+			System.out.println(this._x);
+			movingRight = t;
     }
+    else movingRight = false;
+   
+		
+    }
+	
+    
 	
 	public void setLeftMove(boolean t)
     {
-        if(movingRight && t) movingRight = false;
-        movingLeft = t;
+		if(!Stop(9)){
+			if(movingRight && t) movingRight = false;
+	        movingLeft = t;
+		}
+		else movingLeft = false;
+        
     }
 	
 	public void setUpMove(boolean t)
     {
-        if(movingDown && t) movingDown = false;
-        movingUp = t;
+		if(!Stop(12)){
+			 if(movingDown && t) movingDown = false;
+			 System.out.println(this._y);
+		        movingUp = t;
+		}
+		else movingUp = false;
     }
 	
 	public void setDownMove(boolean t)
     {
-        if(movingUp && t) movingUp = false;
-        movingDown = t;
+		if(!Stop(6)){
+			if(movingUp && t) movingUp = false;
+	        movingDown = t;
+		}
+		else movingDown = false;
+        
     }
 
 }
