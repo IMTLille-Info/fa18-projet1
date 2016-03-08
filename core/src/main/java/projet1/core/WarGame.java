@@ -1,52 +1,63 @@
 package projet1.core;
 
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
+import projet1.core.screens.GameScreen;
+import projet1.core.screens.Splash;
+
+import com.badlogic.gdx.Game;
 
 
-public class Game implements ApplicationListener {
-	private Texture texture;
-	private SpriteBatch batch;
-	private Hero hero;
-	private InputKeyboard inputKeyboard;
+
+public class WarGame extends Game {
+	
+	public Splash splash;
+	public GameScreen gameScreen; 
+	
+
 
 	@Override
 	public void create () {
-		texture = new Texture(Gdx.files.internal("map01.png"));
-		batch = new SpriteBatch();
-		hero = new Hero(100,100);
-		inputKeyboard = new InputKeyboard(this.hero);
-		Gdx.input.setInputProcessor(inputKeyboard);
+		splash = new Splash(this);
+		gameScreen = new GameScreen();
+		setScreen(new Splash(this));
+		//texture = new Texture(Gdx.files.internal("map01.png"));
+		//batch = new SpriteBatch();
+		//hero = new Hero(100,100);
+		//inputKeyboard = new InputKeyboard(this.hero);
+		//Gdx.input.setInputProcessor(inputKeyboard);
 		System.out.println("create");
 	}
 
 	@Override
 	public void resize (int width, int height) {
+		super.resize(width, height);
 	}
 
 	@Override
 	public void render () {
-		batch.begin();
-		batch.draw(texture, 0, 0);
-		this.hero.draw(batch);
-		batch.end();
+		super.render();
+		//batch.begin();
+		//batch.draw(texture, 0, 0);
+		//this.hero.draw(batch);
+		//batch.end();
 	}
 
 	@Override
 	public void pause () {
+		super.pause();
 	}
+
 
 	@Override
 	public void resume () {
+		super.resume();
 	}
 
 	@Override
 	public void dispose () {
-		texture.dispose();
-		batch.dispose();
+		super.dispose();
+		//texture.dispose();
+		//batch.dispose();
 	}
 	
 }
