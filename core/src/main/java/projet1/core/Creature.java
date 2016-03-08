@@ -3,7 +3,7 @@ package projet1.core;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-public class Creature {
+public abstract class Creature {
 	protected int _x;
 	protected int _y;
 	protected Texture _texture;
@@ -14,4 +14,7 @@ public class Creature {
 	protected boolean movingRight;
 	protected boolean movingUp;
 	protected boolean movingDown;
+	
+	public abstract void Move();
+	
 }
