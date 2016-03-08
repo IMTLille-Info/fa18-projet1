@@ -71,7 +71,7 @@ public class Splash implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		splashBatch = new SpriteBatch();
-		splashTexture = new Texture("splash02.png");
+		splashTexture = new Texture("splash04.png");
 		splash = new Sprite(splashTexture); 
 		splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
