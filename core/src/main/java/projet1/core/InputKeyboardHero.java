@@ -4,11 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
-public class InputKeyboard implements InputProcessor {
+public class InputKeyboardHero implements InputProcessor {
 	
 	private Hero hero;
 	
-	public InputKeyboard(Hero hero){
+	public InputKeyboardHero(Hero hero){
 		this.hero = hero;
 	}
 

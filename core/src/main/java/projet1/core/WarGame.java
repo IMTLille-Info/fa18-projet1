@@ -19,12 +19,7 @@ public class WarGame extends Game {
 	public void create () {
 		splash = new Splash(this);
 		gameScreen = new GameScreen();
-		setScreen(new Splash(this));
-		//texture = new Texture(Gdx.files.internal("map01.png"));
-		//batch = new SpriteBatch();
-		//hero = new Hero(100,100);
-		//inputKeyboard = new InputKeyboard(this.hero);
-		//Gdx.input.setInputProcessor(inputKeyboard);
+		setScreen(splash);
 		System.out.println("create");
 	}
 
@@ -36,10 +31,6 @@ public class WarGame extends Game {
 	@Override
 	public void render () {
 		super.render();
-		//batch.begin();
-		//batch.draw(texture, 0, 0);
-		//this.hero.draw(batch);
-		//batch.end();
 	}
 
 	@Override
@@ -56,8 +47,6 @@ public class WarGame extends Game {
 	@Override
 	public void dispose () {
 		super.dispose();
-		//texture.dispose();
-		//batch.dispose();
 	}
 	
 }
