@@ -7,7 +7,7 @@ hs_err_pid*
 
 
 ## OS Specific
-.DS_Store
+*.DS_Store
 
 
 ## Eclipse
