@@ -5,7 +5,6 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader.Config;
 
 
 
@@ -143,6 +142,7 @@ public class Hero extends Creature{
 			}
 		return true;
 	}
+	
 
 	public void setRightMove(boolean t)
     {	
@@ -150,9 +150,8 @@ public class Hero extends Creature{
 			if(movingLeft && t ) movingLeft = false;
 			System.out.println(this._x);
 			movingRight = t;
-    }
-    else movingRight = false;
-   
+		}
+		else movingRight = false; 
 		
     }
 	
