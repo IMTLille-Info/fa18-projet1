@@ -10,15 +10,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Hero extends Creature{
 	private LwjglApplicationConfiguration config;
+	private String _lastMoving;
 	
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._texture = new Texture(Gdx.files.internal("./viking/0020.png"));
+		this._lastMoving = "./viking/0020.png";
+		this._texture = new Texture(Gdx.files.internal(this._lastMoving));
 		this._sprite = new Sprite(this._texture);
 		this.i=0;
 		this.vitesseMovement = 0;
 		config = new LwjglApplicationConfiguration();
+		
 		
 	}
 	
@@ -57,6 +60,7 @@ public class Hero extends Creature{
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
+			this._lastMoving="./viking/0070.png";
 		}
 		if(movingRight && !movingUp && !movingDown){ // déplacement vers Est			
 			if(this.vitesseMovement%8 == 0){				
@@ -64,6 +68,7 @@ public class Hero extends Creature{
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
+			this._lastMoving="./viking/0010.png";
 		}
 		if(movingUp && !movingLeft && !movingRight){ // déplacement vers Nord			
 			if(this.vitesseMovement%8 == 0){
@@ -71,7 +76,7 @@ public class Hero extends Creature{
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
-				
+			this._lastMoving="./viking/0020.png";
 		}
 		if(movingDown && !movingLeft && !movingRight){ // déplacement vers Sud			
 			if(this.vitesseMovement%8 == 0){
@@ -79,6 +84,7 @@ public class Hero extends Creature{
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
+			this._lastMoving="./viking/0000.png";
 		}
 		if(movingUp && movingRight){ // déplacement vers Nord-Est
 			if(this.vitesseMovement%8 == 0){
@@ -86,6 +92,7 @@ public class Hero extends Creature{
 				String path = "./viking/001"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
+			this._lastMoving="./viking/0015.png";
 		}
 		if(movingUp && movingLeft){ // déplacement vers Nord-Ouest
 			if(this.vitesseMovement%8 == 0){
@@ -93,6 +100,7 @@ public class Hero extends Creature{
 				String path = "./viking/009"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
+			this._lastMoving="./viking/0095.png";
 		}
 		if(movingDown && movingRight){ // déplacement vers Sud-Est
 			if(this.vitesseMovement%8 == 0){
@@ -100,6 +108,7 @@ public class Hero extends Creature{
 				String path = "./viking/000"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
+			this._lastMoving="./viking/0005.png";
 		}
 		if(movingDown && movingLeft){ // déplacement vers Sud-Ouest
 			if(this.vitesseMovement%8 == 0){
@@ -107,11 +116,12 @@ public class Hero extends Creature{
 				String path = "./viking/008"+this.i+".png";			
 		        this._texture = new Texture(Gdx.files.internal(path));		        
 			}
+			this._lastMoving="./viking/0085.png";
 		}
 		
 		
 		if(!(movingLeft || movingRight || movingUp || movingDown)) // position statique
-			this._texture = new Texture(Gdx.files.internal("./viking/0020.png"));
+			this._texture = new Texture(Gdx.files.internal(this._lastMoving));
 		
 		this._sprite = new Sprite(this._texture);
 		
