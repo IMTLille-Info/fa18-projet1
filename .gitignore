@@ -7,11 +7,11 @@ hs_err_pid*
 
 
 ## OS Specific
-.DS_Store
+*.DS_Store
 
 
 ## Eclipse
-.classpath
+*.classpath
 .project
 .metadata
 **/bin/
@@ -25,3 +25,4 @@ local.properties
 .loadpath
 .externalToolBuilders/
 *.launch
+*.recommenders/

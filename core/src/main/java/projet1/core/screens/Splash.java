@@ -1,6 +1,4 @@
-/**
- * The Main Screen of the game : Press ENTER to play
- */
+
 
 package projet1.core.screens;
 
