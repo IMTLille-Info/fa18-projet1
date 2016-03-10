@@ -11,8 +11,20 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.AddListenerAction;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Splash implements Screen {
 
@@ -21,6 +33,14 @@ public class Splash implements Screen {
 	private SpriteBatch splashBatch;
 	private WarGame game;
 	
+    private BitmapFont font; 
+	private Stage stage;
+	private TextureAtlas buttonTexture;
+	private Skin skin;
+	private Table table;
+	private TextButton buttonplay;
+	private TextButton buttonexit;
+	
 	public Splash(WarGame game){
 		this.game = game;
 	}
@@ -28,6 +48,8 @@ public class Splash implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		splashBatch.dispose();
+		splash.getTexture().dispose();
 		
 	}
 
@@ -50,9 +72,16 @@ public class Splash implements Screen {
 		 splash.draw(splashBatch);
 		 splashBatch.end();
 		 
+		
+		
+		 
+		 stage.act(arg0);
+		 stage.draw();
+		 
 		 //when pressing Key ENTER , change screen
 		 if (Gdx.input.isKeyPressed(Keys.ENTER)) 
              game.setScreen(game.gameScreen);
+		 
 	}
 
 	@Override
@@ -71,9 +100,50 @@ public class Splash implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		splashBatch = new SpriteBatch();
-		splashTexture = new Texture("splash04.png");
+		splashTexture = new Texture(Gdx.files.internal("splash02.png"));
 		splash = new Sprite(splashTexture); 
 		splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		
+		stage = new Stage();
+		Gdx.input.setInputProcessor(stage); 
+		buttonTexture = new TextureAtlas("./screens/button.pack");
+		skin = new Skin(buttonTexture);
+
+		font = new BitmapFont(Gdx.files.internal("screens/joker.fnt"),false);
+		
+		table = new Table(skin);
+		table.setBounds(150,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		
+		TextButtonStyle style = new TextButtonStyle();
+		style.up =skin.getDrawable("buttonOff");
+		style.down =skin.getDrawable("buttonOn");
+		style.font = font;
+		
+		buttonplay = new TextButton("Start Game",style);
+		buttonplay.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				game.setScreen(game.gameScreen);
+			}
+		});
+		
+		buttonexit = new TextButton("EXIT",style);
+		buttonexit.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.exit();
+			}
+		});
+		
+		
+		
+		table.add(buttonplay);
+		table.row();
+		table.add(buttonexit);
+		
+		table.debug();
+		stage.addActor(table);
 	}
 
 }

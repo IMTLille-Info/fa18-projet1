@@ -19,7 +19,7 @@ public class WarGame extends Game {
 	public void create () {
 		splash = new Splash(this);
 		gameScreen = new GameScreen();
-		setScreen(new Splash(this));
+		setScreen(splash);
 		//texture = new Texture(Gdx.files.internal("map01.png"));
 		//batch = new SpriteBatch();
 		//hero = new Hero(100,100);
