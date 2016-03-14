@@ -30,6 +30,7 @@ public class Hero extends Creature{
 		this._sprite.setPosition(_x, _y);
 		this._sprite.draw(batch);
 	}
+	
 
 	public void Move(){
 		
@@ -50,6 +51,7 @@ public class Hero extends Creature{
 		if(movingDown){
 			this._y -= 50 * Gdx.graphics.getDeltaTime();
 		}
+		
 		
 		
 		
@@ -158,7 +160,6 @@ public class Hero extends Creature{
     {	
 		if(!Stop(3)){
 			if(movingLeft && t ) movingLeft = false;
-			System.out.println(this._x);
 			movingRight = t;
 		}
 		else movingRight = false; 
@@ -181,7 +182,6 @@ public class Hero extends Creature{
     {
 		if(!Stop(12)){
 			 if(movingDown && t) movingDown = false;
-			 System.out.println(this._y);
 		        movingUp = t;
 		}
 		else movingUp = false;
