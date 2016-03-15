@@ -23,12 +23,10 @@ public class Hero extends Creature{
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet - copie.atlas"));
-		AtlasRegion region = this._textureAtlas.findRegion("0001");
+		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet.txt"));
+		AtlasRegion region = this._textureAtlas.findRegion("0020");
 		this._sprite = new Sprite(region);
-		this._sprite.setPosition(100,100);
-		this._sprite.scale(2.5f);
-
+		this._sprite.setPosition(this._x,this._y);
 		config = new LwjglApplicationConfiguration();
 		
 		
