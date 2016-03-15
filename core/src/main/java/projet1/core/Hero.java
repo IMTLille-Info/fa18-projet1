@@ -23,7 +23,7 @@ public class Hero extends Creature{
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet.atlas"));
+		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet - copie.atlas"));
 		AtlasRegion region = this._textureAtlas.findRegion("0001");
 		this._sprite = new Sprite(region);
 		this._sprite.setPosition(100,100);
