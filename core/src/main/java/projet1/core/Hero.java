@@ -5,25 +5,35 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 
 
 
 public class Hero extends Creature{
 	private LwjglApplicationConfiguration config;
-	private String _lastMoving;
+	
+	private int _x,_y;
+	
+	private Sprite _sprite;
+	private TextureAtlas _textureAtlas;
+	
+	
 	
 	public Hero(int x, int y){
 		this._x = x;
 		this._y = y;
-		this._lastMoving = "./viking/0020.png";
-		this._texture = new Texture(Gdx.files.internal(this._lastMoving));
-		this._sprite = new Sprite(this._texture);
-		this.i=0;
-		this.vitesseMovement = 0;
+		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet.atlas"));
+		AtlasRegion region = this._textureAtlas.findRegion("0001");
+		this._sprite = new Sprite(region);
+		this._sprite.setPosition(100,100);
+		this._sprite.scale(2.5f);
+
 		config = new LwjglApplicationConfiguration();
 		
 		
 	}
+	
 	
 	public void draw(SpriteBatch batch){
 		this.Move();
@@ -52,13 +62,12 @@ public class Hero extends Creature{
 			this._y -= 50 * Gdx.graphics.getDeltaTime();
 		}
 		
-		
+
 		
 		
 		// affichage du personnage selon ses déplacements
-		if(movingLeft && !movingUp && !movingDown){ // déplacement vers Ouest
-			if(this.vitesseMovement%8 == 0){
-				String path = "./viking/007"+this.i+".png";			
+		/*if(movingLeft && !movingUp && !movingDown){ // déplacement vers Ouest
+			if(this.vitesseMovement%8 == 0){		
 		        this._texture = new Texture(Gdx.files.internal(path));
 		        this.i = (this.i + 1)%5;
 			}
@@ -126,11 +135,14 @@ public class Hero extends Creature{
 			this._texture = new Texture(Gdx.files.internal(this._lastMoving));
 		
 		this._sprite = new Sprite(this._texture);
-		
+		*/
 		
 		
 	}
 	
+
+	
+
 	/**
 	 * 
 	 * @param key : clockwise => 3 for right 
