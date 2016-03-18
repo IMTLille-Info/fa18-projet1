@@ -1,51 +1,109 @@
 package projet1.core;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-
-
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Hero extends Creature{
-	private LwjglApplicationConfiguration config;
 	
-	private int _x,_y;
+	// variable de déplacement
+	private boolean movingLeft;
+	private boolean movingRight;
+	private boolean movingUp;
+	private boolean movingDown;
 	
-	private Sprite _sprite;
-	private TextureAtlas _textureAtlas;
+	// variables pour les texture(images du hero)
+	private TextureRegion[] aGoUp,aGoDown,aGoRight,aGoLeft,aGoUpRight,aGoUpLeft,aGoDownRight,aGoDownLeft;
+	private TextureRegion currentTexture;
 	
+	// Variables pour les animations
+	private HashMap<Direction,Animation> Animations;
+	private Animation currentAnimation, stopAnimation;
+	private static final float FRAMEDURATION = (float) 0.06; // vitesse animation
 	
-	
+	/*
+	 * Init Hero Class
+	 * @param x abscisse
+	 * @param y ordonnée
+	 */
 	public Hero(int x, int y){
-		this._x = x;
-		this._y = y;
-		this._textureAtlas = new TextureAtlas(Gdx.files.internal("./HeroSpriteSheet.txt"));
-		AtlasRegion region = this._textureAtlas.findRegion("0020");
-		this._sprite = new Sprite(region);
-		this._sprite.setPosition(this._x,this._y);
-		config = new LwjglApplicationConfiguration();
-		
-		
+		super(x,y, "./Hero_Sprites/HeroSpriteSheet.txt", "0020");
+		this.initAnimations();	
 	}
 	
+	/*
+	 * Init all Animations with file .txt and .png of Hero
+	 */
+	private void initAnimations(){
+		// init Texture Region
+		this.aGoDown = new TextureRegion[5];
+		this.aGoUp = new TextureRegion[5];
+		this.aGoRight = new TextureRegion[5];
+		this.aGoLeft = new TextureRegion[5];
+		this.aGoDownRight = new TextureRegion[5];
+		this.aGoUpRight = new TextureRegion[5];
+		this.aGoDownLeft = new TextureRegion[5];
+		this.aGoUpLeft = new TextureRegion[5];
+		
+		
+		for(int i=0;i<10;i++){
+			if(i<5){
+				// déplacements verticaux et horizontaux
+				this.aGoUp[i]=this._textureAtlas.findRegions("002"+i).first();
+				this.aGoDown[i]=this._textureAtlas.findRegions("000"+i).first();
+				this.aGoRight[i]=this._textureAtlas.findRegions("001"+i).first();
+				this.aGoLeft[i]=this._textureAtlas.findRegions("003"+i).first();
+			}
+			else {
+				// déplacements diagonales
+				this.aGoUpRight[i-5]=this._textureAtlas.findRegions("001"+i).first();
+				this.aGoDownRight[i-5]=this._textureAtlas.findRegions("000"+i).first();
+				this.aGoUpLeft[i-5]=this._textureAtlas.findRegions("002"+i).first();
+				this.aGoDownLeft[i-5]=this._textureAtlas.findRegions("003"+i).first();
+			}
+		}
+		
+		// init animation
+		this.Animations = new HashMap<Direction,Animation>();
+		this.Animations.put(Direction.GOUP, new Animation(FRAMEDURATION, this.aGoUp));
+		this.Animations.put(Direction.GODOWN, new Animation(FRAMEDURATION, this.aGoDown));
+		this.Animations.put(Direction.GORIGHT, new Animation(FRAMEDURATION, this.aGoRight));
+		this.Animations.put(Direction.GOLEFT, new Animation(FRAMEDURATION, this.aGoLeft));
+		this.Animations.put(Direction.GOUPRIGHT, new Animation(FRAMEDURATION, this.aGoUpRight));
+		this.Animations.put(Direction.GODOWNRIGHT, new Animation(FRAMEDURATION, this.aGoDownRight));
+		this.Animations.put(Direction.GOUPLEFT, new Animation(FRAMEDURATION, this.aGoUpLeft));
+		this.Animations.put(Direction.GODOWNLEFT, new Animation(FRAMEDURATION, this.aGoDownLeft));
+		this.Animations.put(Direction.STOPUP, new Animation(FRAMEDURATION, this.aGoUp[0]));
+		this.Animations.put(Direction.STOPDOWN, new Animation(FRAMEDURATION, this.aGoDown[0]));
+		this.Animations.put(Direction.STOPRIGHT, new Animation(FRAMEDURATION, this.aGoRight[0]));
+		this.Animations.put(Direction.STOPLEFT, new Animation(FRAMEDURATION, this.aGoLeft[0]));
+		this.Animations.put(Direction.STOPUPRIGHT, new Animation(FRAMEDURATION, this.aGoUpRight[0]));
+		this.Animations.put(Direction.STOPDOWNRIGHT, new Animation(FRAMEDURATION, this.aGoDownRight[0]));
+		this.Animations.put(Direction.STOPUPLEFT, new Animation(FRAMEDURATION, this.aGoUpLeft[0]));
+		this.Animations.put(Direction.STOPDOWNLEFT, new Animation(FRAMEDURATION, this.aGoDownLeft[0]));
+		
+		// initialisation de départ
+		this.currentAnimation = this.Animations.get(Direction.STOPUP);
+		this.stopAnimation = this.Animations.get(Direction.STOPUP);
+		
+	}
 	
 	public void draw(SpriteBatch batch){
-		this.Move();
-		this._sprite.setPosition(_x, _y);
-		this._sprite.draw(batch);
+		this.move();
+		this.setTexture();
+		//this.setTexture(batch);	
+		//this._sprite.draw(batch);
+		//this._sprite.setPosition(this._x, this._y);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+		this.currentTexture = this.currentAnimation.getKeyFrame(1000*Gdx.graphics.getDeltaTime(),true);
+		batch.draw(this.currentTexture,this._x,this._y);
 	}
 	
-
-	public void Move(){
-		
-		this.vitesseMovement++;
-		
-		this.i %= 5;
-		
+	public void move(){		
 		// déplacement du personnage
 		if(movingLeft){
 			this._x -= 50 * Gdx.graphics.getDeltaTime();
@@ -59,88 +117,52 @@ public class Hero extends Creature{
 		if(movingDown){
 			this._y -= 50 * Gdx.graphics.getDeltaTime();
 		}
-		
+	}
 
-		
+	public void setTexture() {			
 		
 		// affichage du personnage selon ses déplacements
-		/*if(movingLeft && !movingUp && !movingDown){ // déplacement vers Ouest
-			if(this.vitesseMovement%8 == 0){		
-		        this._texture = new Texture(Gdx.files.internal(path));
-		        this.i = (this.i + 1)%5;
-			}
-			this._lastMoving="./viking/0070.png";
+		if(movingLeft && !movingUp && !movingDown){ // déplacement vers Ouest
+			this.currentAnimation = this.Animations.get(Direction.GOLEFT);
+			this.stopAnimation = this.Animations.get(Direction.STOPLEFT);
 		}
 		if(movingRight && !movingUp && !movingDown){ // déplacement vers Est			
-			if(this.vitesseMovement%8 == 0){				
-				String path = "./viking/001"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));
-		        this.i = (this.i + 1)%5;
-			}
-			this._lastMoving="./viking/0010.png";
+			this.currentAnimation = this.Animations.get(Direction.GORIGHT);
+			this.stopAnimation = this.Animations.get(Direction.STOPRIGHT);
 		}
 		if(movingUp && !movingLeft && !movingRight){ // déplacement vers Nord			
-			if(this.vitesseMovement%8 == 0){
-				String path = "./viking/002"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));
-		        this.i = (this.i + 1)%5;
-			}
-			this._lastMoving="./viking/0020.png";
+			this.currentAnimation = this.Animations.get(Direction.GOUP);
+			this.stopAnimation = this.Animations.get(Direction.STOPUP);
 		}
 		if(movingDown && !movingLeft && !movingRight){ // déplacement vers Sud			
-			if(this.vitesseMovement%8 == 0){
-				String path = "./viking/000"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));
-		        this.i = (this.i + 1)%5;
-			}
-			this._lastMoving="./viking/0000.png";
+			this.currentAnimation = this.Animations.get(Direction.GODOWN);
+			this.stopAnimation = this.Animations.get(Direction.STOPDOWN);
 		}
 		if(movingUp && movingRight){ // déplacement vers Nord-Est
-			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/001"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));		        
-			}
-			this._lastMoving="./viking/0015.png";
+			this.currentAnimation = this.Animations.get(Direction.GOUPRIGHT);
+			this.stopAnimation = this.Animations.get(Direction.STOPUPRIGHT);
 		}
 		if(movingUp && movingLeft){ // déplacement vers Nord-Ouest
-			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/009"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));		        
-			}
-			this._lastMoving="./viking/0095.png";
+			this.currentAnimation = this.Animations.get(Direction.GOUPLEFT);
+			this.stopAnimation = this.Animations.get(Direction.STOPUPLEFT);
 		}
 		if(movingDown && movingRight){ // déplacement vers Sud-Est
-			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/000"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));		        
-			}
-			this._lastMoving="./viking/0005.png";
+			this.currentAnimation = this.Animations.get(Direction.GODOWNRIGHT);
+			this.stopAnimation = this.Animations.get(Direction.STOPDOWNRIGHT);
 		}
 		if(movingDown && movingLeft){ // déplacement vers Sud-Ouest
-			if(this.vitesseMovement%8 == 0){
-				this.i = (this.i + 1)%5 + 5;
-				String path = "./viking/008"+this.i+".png";			
-		        this._texture = new Texture(Gdx.files.internal(path));		        
-			}
-			this._lastMoving="./viking/0085.png";
+			this.currentAnimation = this.Animations.get(Direction.GODOWNLEFT);
+			this.stopAnimation = this.Animations.get(Direction.STOPDOWNLEFT);
 		}
 		
-		
-		if(!(movingLeft || movingRight || movingUp || movingDown)) // position statique
-			this._texture = new Texture(Gdx.files.internal(this._lastMoving));
-		
-		this._sprite = new Sprite(this._texture);
-		*/
-		
-		
+		// position statique
+		if(!(movingLeft || movingRight || movingUp || movingDown))
+			this.currentAnimation = this.stopAnimation;
+			
+
+			
 	}
 	
-
-	
-
 	/**
 	 * 
 	 * @param key : clockwise => 3 for right 
@@ -176,8 +198,6 @@ public class Hero extends Creature{
 		
     }
 	
-    
-	
 	public void setLeftMove(boolean t)
     {
 		if(!Stop(9)){
@@ -206,5 +226,17 @@ public class Hero extends Creature{
 		else movingDown = false;
         
     }
+
+	
+
+	
+
+
+	
+
+
+	
+    
+	
 
 }
