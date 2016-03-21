@@ -28,8 +28,8 @@ public class Splash implements Screen {
 	private Texture splashTexture;
 	private SpriteBatch splashBatch;
 	private WarGame game;
-	
-    private BitmapFont font; 
+
+	private BitmapFont font;
 	private Stage stage;
 	private TextureAtlas buttonTexture;
 	private Skin skin;
@@ -37,60 +37,56 @@ public class Splash implements Screen {
 	private TextButton buttonplay;
 	private TextButton buttonexit;
 	private TextButton buttonfight;
-	
-	public Splash(WarGame game){
+
+	public Splash(WarGame game) {
 		this.game = game;
 	}
-	
+
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 		splashBatch.dispose();
 		splash.getTexture().dispose();
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void render(float arg0) {
 		// TODO Auto-generated method stub
-		 splashBatch.begin();
-		 splash.draw(splashBatch);
-		 splashBatch.end();
-		 
-		
-		
-		 
-		 stage.act(arg0);
-		 stage.draw();
-		 
-		 //when pressing Key ENTER , change screen
-		 if (Gdx.input.isKeyPressed(Keys.ENTER)) 
-             game.setScreen(game.gameScreen);
-		 
+		splashBatch.begin();
+		splash.draw(splashBatch);
+		splashBatch.end();
+		stage.act(arg0);
+		stage.draw();
+
+		// when pressing Key ENTER , change screen
+		if (Gdx.input.isKeyPressed(Keys.ENTER))
+			game.setScreen(game.gameScreen);
+
 	}
 
 	@Override
 	public void resize(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -98,50 +94,48 @@ public class Splash implements Screen {
 		// TODO Auto-generated method stub
 		splashBatch = new SpriteBatch();
 		splashTexture = new Texture(Gdx.files.internal("splash02.png"));
-		splash = new Sprite(splashTexture); 
+		splash = new Sprite(splashTexture);
 		splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
-		
+
 		stage = new Stage();
-		Gdx.input.setInputProcessor(stage); 
+		Gdx.input.setInputProcessor(stage);
 		buttonTexture = new TextureAtlas("./screens/button.pack");
 		skin = new Skin(buttonTexture);
 
-		font = new BitmapFont(Gdx.files.internal("screens/joker.fnt"),false);
-		
+		font = new BitmapFont(Gdx.files.internal("screens/joker.fnt"), false);
+
 		table = new Table(skin);
-		table.setBounds(150,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		
+		table.setBounds(150, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
 		TextButtonStyle style = new TextButtonStyle();
-		style.up =skin.getDrawable("buttonOff");
-		style.down =skin.getDrawable("buttonOn");
+		style.up = skin.getDrawable("buttonOff");
+		style.down = skin.getDrawable("buttonOn");
 		style.font = font;
-		
-		buttonplay = new TextButton("Start Game",style);
-		buttonplay.addListener(new ClickListener(){
+
+		buttonplay = new TextButton("Start Game", style);
+		buttonplay.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.setScreen(game.gameScreen);
 			}
 		});
-		
-		buttonexit = new TextButton("EXIT",style);
-		buttonexit.addListener(new ClickListener(){
+
+		buttonexit = new TextButton("EXIT", style);
+		buttonexit.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.exit();
 			}
 		});
-		
-		buttonfight = new TextButton("FIGHT",style);
-		buttonfight.addListener(new ClickListener(){
+
+		buttonfight = new TextButton("FIGHT", style);
+		buttonfight.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.setScreen(game.fightScreen);
 			}
 		});
-		
-		
+
 		table.add(buttonplay);
 		table.row();
 		table.add(buttonexit);

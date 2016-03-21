@@ -1,3 +1,4 @@
+package projet1.core;
 import projet1.core.Creature;
 import projet1.core.Hero;
 import projet1.core.Skill;
