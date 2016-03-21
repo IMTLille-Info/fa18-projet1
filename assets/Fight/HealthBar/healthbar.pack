@@ -1,0 +1,74 @@
+healthbar.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+1.PNG
+  rotate: false
+  xy: 1386, 1
+  size: 25, 50
+  orig: 25, 50
+  offset: 0, 0
+  index: -1
+2.PNG
+  rotate: false
+  xy: 1334, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+3.PNG
+  rotate: false
+  xy: 1, 1
+  size: 100, 50
+  orig: 100, 50
+  offset: 0, 0
+  index: -1
+4.PNG
+  rotate: false
+  xy: 1259, 1
+  size: 170, 50
+  orig: 170, 50
+  offset: 0, 0
+  index: -1
+5.PNG
+  rotate: false
+  xy: 1007, 53
+  size: 250, 50
+  orig: 250, 50
+  offset: 0, 0
+  index: -1
+6.PNG
+  rotate: false
+  xy: 1007, 1
+  size: 325, 50
+  orig: 325, 50
+  offset: 0, 0
+  index: -1
+7.PNG
+  rotate: false
+  xy: 605, 1
+  size: 400, 50
+  orig: 400, 50
+  offset: 0, 0
+  index: -1
+8.PNG
+  rotate: false
+  xy: 555, 53
+  size: 450, 50
+  orig: 450, 50
+  offset: 0, 0
+  index: -1
+9.PNG
+  rotate: false
+  xy: 53, 1
+  size: 500, 50
+  orig: 500, 50
+  offset: 0, 0
+  index: -1
+10.PNG
+  rotate: false
+  xy: 53, 53
+  size: 550, 50
+  orig: 550, 50
+  offset: 0, 0
+  index: -1

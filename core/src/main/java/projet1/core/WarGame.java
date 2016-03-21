@@ -1,6 +1,7 @@
 package projet1.core;
 
 
+import projet1.core.screens.FightScreen;
 import projet1.core.screens.GameScreen;
 import projet1.core.screens.Splash;
 
@@ -12,6 +13,7 @@ public class WarGame extends Game {
 	
 	public Splash splash;
 	public GameScreen gameScreen; 
+	public FightScreen fightScreen;
 	
 
 
@@ -19,6 +21,7 @@ public class WarGame extends Game {
 	public void create () {
 		splash = new Splash(this);
 		gameScreen = new GameScreen();
+		fightScreen = new FightScreen();
 		setScreen(splash);
 		System.out.println("create");
 	}

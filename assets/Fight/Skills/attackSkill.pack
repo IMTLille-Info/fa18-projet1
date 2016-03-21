@@ -1,0 +1,19 @@
+
+attackSkill.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_skill-clicked
+  rotate: false
+  xy: 1, 1
+  size: 82, 93
+  orig: 82, 93
+  offset: 0, 0
+  index: -1
+Attack_skill
+  rotate: false
+  xy: 85, 1
+  size: 82, 93
+  orig: 82, 93
+  offset: 0, 0
+  index: -1

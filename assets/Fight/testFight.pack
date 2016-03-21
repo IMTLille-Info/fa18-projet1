@@ -1,0 +1,12 @@
+
+testFight.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+0035
+  rotate: false
+  xy: 1, 1
+  size: 51, 58
+  orig: 51, 58
+  offset: 0, 0
+  index: -1

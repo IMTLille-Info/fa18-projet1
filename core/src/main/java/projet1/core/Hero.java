@@ -25,6 +25,11 @@ public class Hero extends Creature{
 	private Animation currentAnimation, stopAnimation;
 	private static final float FRAMEDURATION = (float) 0.06; // vitesse animation
 	
+	//Equipement
+	private Weapon weapon;
+	private Shield shield;
+	
+
 	/*
 	 * Init Hero Class
 	 * @param x abscisse
@@ -226,6 +231,22 @@ public class Hero extends Creature{
 		else movingDown = false;
         
     }
+
+	public Shield getShield() {
+		return shield;
+	}
+
+	public void setShield(Shield shield) {
+		this.shield = shield;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
 
 	
 
