@@ -25,6 +25,7 @@ public class Hero extends Creature{
 	private Animation currentAnimation, stopAnimation;
 	private static final float FRAMEDURATION = (float) 0.06; // vitesse animation
 	
+	
 	/*
 	 * Init Hero Class
 	 * @param x abscisse
