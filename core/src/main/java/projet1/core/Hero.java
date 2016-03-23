@@ -98,11 +98,7 @@ public class Hero extends Creature{
 	
 	public void draw(SpriteBatch batch){
 		this.move();
-		this.setTexture();
-		//this.setTexture(batch);	
-		//this._sprite.draw(batch);
-		//this._sprite.setPosition(this._x, this._y);
-		
+		this.setTexture();		
 		this.currentTexture = this.currentAnimation.getKeyFrame(this.framenumber,true);
 		this.framenumber= this.framenumber+1 % 5;
 		batch.draw(this.currentTexture,this._x,this._y);
@@ -111,13 +107,13 @@ public class Hero extends Creature{
 	
 	public void move(){		
 		// déplacement du personnage
-		if(movingLeft){
+		if(movingLeft ){
 			this._x -= 50 * Gdx.graphics.getDeltaTime();
 		}
-		if(movingRight){
+		if(movingRight && this._x<Gdx.graphics.getWidth()-50){
 			this._x += 100 * Gdx.graphics.getDeltaTime();
 		}
-		if(movingUp){
+		if(movingUp && this._y<Gdx.graphics.getHeight()-50){
 			this._y += 100 * Gdx.graphics.getDeltaTime();
 		}
 		if(movingDown){
@@ -169,68 +165,31 @@ public class Hero extends Creature{
 			
 	}
 	
-	/**
-	 * 
-	 * @param key : clockwise => 3 for right 
-	 * 							 6 for down
-	 * 							 9 for left
-	 * 							 12 for Up
-	 * @return
-	 */
-	public boolean Stop(int key){
-		if(key == 3){
-		if(this._x<this.config.width - 50) return false;
-		}
-		if(key == 6){
-			if(this._y>0) return false;
-			}
-		if(key == 9){
-			if(this._x>0) return false;
-			}
-		if(key == 12){
-			if(this._y<this.config.height-50) return false;
-			}
-		return true;
-	}
 	
 
 	public void setRightMove(boolean t)
     {	
-		if(!Stop(3)){
-			if(movingLeft && t ) movingLeft = false;
-			movingRight = t;
-		}
-		else movingRight = false; 
-		
+		if(movingLeft && t ) movingLeft = false;
+		movingRight = t;		
     }
 	
 	public void setLeftMove(boolean t)
     {
-		if(!Stop(9)){
-			if(movingRight && t) movingRight = false;
-	        movingLeft = t;
-		}
-		else movingLeft = false;
-        
+		if(movingRight && t) movingRight = false;
+        movingLeft = t;
+ 
     }
 	
 	public void setUpMove(boolean t)
     {
-		if(!Stop(12)){
-			 if(movingDown && t) movingDown = false;
-		        movingUp = t;
-		}
-		else movingUp = false;
+		 if(movingDown && t) movingDown = false;
+	        movingUp = t;
     }
 	
 	public void setDownMove(boolean t)
     {
-		if(!Stop(6)){
-			if(movingUp && t) movingUp = false;
-	        movingDown = t;
-		}
-		else movingDown = false;
-        
+		if(movingUp && t) movingUp = false;
+        movingDown = t;        
     }
 
 	
