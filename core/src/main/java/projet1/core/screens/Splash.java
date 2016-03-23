@@ -51,7 +51,7 @@ public class Splash implements Screen {
 		 
 		 //when pressing Key ENTER , change screen
 		 if (Gdx.input.isKeyPressed(Keys.ENTER)) 
-             game.setScreen(game.gameScreen);
+             game.setScreen((Screen) game.gameTiledScreen);
 	}
 
 	@Override
