@@ -23,8 +23,9 @@ public class Hero extends Creature{
 	// Variables pour les animations
 	private HashMap<Direction,Animation> Animations;
 	private Animation currentAnimation, stopAnimation;
-	private static final float FRAMEDURATION = (float) 0.06; // vitesse animation
+	private static final float FRAMEDURATION = (float) 10; // vitesse animation
 	
+	private int framenumber;
 	
 	/*
 	 * Init Hero Class
@@ -40,6 +41,8 @@ public class Hero extends Creature{
 	 * Init all Animations with file .txt and .png of Hero
 	 */
 	private void initAnimations(){
+		this.framenumber=0;
+		
 		// init Texture Region
 		this.aGoDown = new TextureRegion[5];
 		this.aGoUp = new TextureRegion[5];
@@ -99,9 +102,11 @@ public class Hero extends Creature{
 		//this.setTexture(batch);	
 		//this._sprite.draw(batch);
 		//this._sprite.setPosition(this._x, this._y);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-		this.currentTexture = this.currentAnimation.getKeyFrame(1000*Gdx.graphics.getDeltaTime(),true);
+		
+		this.currentTexture = this.currentAnimation.getKeyFrame(this.framenumber,true);
+		this.framenumber= this.framenumber+1 % 5;
 		batch.draw(this.currentTexture,this._x,this._y);
+		
 	}
 	
 	public void move(){		
