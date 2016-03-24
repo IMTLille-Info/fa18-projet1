@@ -71,22 +71,22 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 		int Yhero = this.hero.getY();
 		System.out.println(Xhero + " " + Yhero);
 		
-		if (Xhero>=Gdx.graphics.getWidth() && !this.right){
+		if (Xhero>Gdx.graphics.getWidth()-2 && !this.right){
 			camera.translate(800,0);
-			this.hero.setX(1);
+			this.hero.setX(2);
 			this.right=true;
-		}else if(Xhero<1 && this.right){
+		}else if(Xhero<2 && this.right){
 			camera.translate(-800,0);
-			this.hero.setX(Gdx.graphics.getWidth()+1);
+			this.hero.setX(Gdx.graphics.getWidth()-2);
 			this.right=false;
 		}
-		if(Yhero>=Gdx.graphics.getHeight() && !this.up){
+		if(Yhero>Gdx.graphics.getHeight()-2 && !this.up){
 			camera.translate(0,800);
-			this.hero.setY(1);
+			this.hero.setY(2);
 			this.up=true;
 		}else if(Yhero<1 && this.up){
 			camera.translate(0,-800);
-			this.hero.setY(Gdx.graphics.getHeight()+1);
+			this.hero.setY(Gdx.graphics.getHeight()-2);
 			this.up=false;
 		}
 		
