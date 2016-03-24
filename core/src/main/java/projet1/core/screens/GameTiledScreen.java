@@ -18,12 +18,13 @@ import projet1.core.InputKeyboardHero;
 
 public class GameTiledScreen extends ApplicationAdapter implements Screen{
 
-	//private Texture img;
+	
 	private TiledMap tiledMap;
 	private TiledMapRenderer tiledMapRenderer;
 	private SpriteBatch spritebatch;
 	private Sprite sprite;
 	private OrthographicCamera camera;
+	private boolean up, right; 	
 	
 	private Hero hero ; 
 	private InputKeyboardHero inputKeyboardHero ;
@@ -34,6 +35,8 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 		Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        this.moveCamera();
+        camera.update();
         tiledMapRenderer.setView(this.camera);
         tiledMapRenderer.render();
 		spritebatch.begin();
@@ -44,9 +47,11 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 	@Override
 	public void show() {
 		this.camera = new OrthographicCamera();
-		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.setToOrtho(false, 800, 800);
+		this.up = this.right = false;
+		
 		camera.update();
-		this.tiledMap = new TmxMapLoader().load("GameScreenV2.tmx");
+		this.tiledMap = new TmxMapLoader().load("GameScreenV3.tmx");
 		this.tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		
 		this.hero = new Hero(100,100);
@@ -59,6 +64,30 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	private void moveCamera(){
+		int Xhero = this.hero.getX();
+		int Yhero = this.hero.getY();
+		System.out.println(Xhero + " " + Yhero);
+		
+		if (Xhero>800 && !this.right){
+			camera.translate(800,0);
+			this.right=true;
+		}
+		if(Xhero<800 && this.right){
+			camera.translate(-800,0);
+			this.right=false;
+		}
+		if(Yhero>800 && !this.up){
+			camera.translate(0,800);
+			this.up=true;
+		}
+		if(Yhero<800 && this.up){
+			camera.translate(0,-800);
+			this.up=false;
+		}
 		
 	}
 	
