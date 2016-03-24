@@ -1,9 +1,8 @@
 package projet1.core;
 
 
-import projet1.core.screens.FightScreen;
-import projet1.core.screens.GameScreen;
-import projet1.core.screens.Splash;
+
+import projet1.core.screens.*;
 
 import com.badlogic.gdx.Game;
 
@@ -12,16 +11,17 @@ import com.badlogic.gdx.Game;
 public class WarGame extends Game {
 	
 	public Splash splash;
-	public GameScreen gameScreen; 
+
 	public FightScreen fightScreen;
-	
+
+	public GameTiledScreen gameTiledScreen;
 
 
 	@Override
 	public void create () {
 		splash = new Splash(this);
-		gameScreen = new GameScreen();
 		fightScreen = new FightScreen();
+		gameTiledScreen = new GameTiledScreen();
 		setScreen(splash);
 		System.out.println("create");
 	}

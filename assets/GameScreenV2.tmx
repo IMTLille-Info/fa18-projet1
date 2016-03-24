@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="30" height="22" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="tileset.png" width="512" height="512"/>
+ </tileset>
+ <layer name="terrain" width="30" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzlluEJwjAQhTOAOoE6gbpK3cAOIJ1AnKvZIN3K+3EHj4dtKLlT0B8fD14hly8ppV1K6Sp0wTkKRZmEm9AHJ8/sv+BpfbQve1of7VvUOVP/y76T4u17F4aZ53bGEb4P4fmmx5keviNhc7m3M7b5rb4F1s6QZYG1vhthq+zAF9dDL9zP0ro1v71wUI7gy/tfmzXfk3BWLuBb86klfkcz3Rcmd16++P5x4mzsPHznZmJy5+WbG/bfer/R32v2/eT/xz/6vgBJCBFI
+  </data>
+ </layer>
+ <layer name="arbres" width="30" height="22">
+  <data encoding="base64" compression="zlib">
+   eJyl1ctvTVEUx/Ht8Q/Q6sgELRMTirgtA5TEa4CS0BqglWDGiP4F6h9o+Qd0xH9APBMkBK1XO6G0yB1o6z3x3clauavLPvsetZJP7u7p6f6tfU6zbiWEUMF5XEAf2tCClaFWVYyF2TUP87EY53DWfTZiCZrC31URF9GPS5K7HhvcvTY7Zi6SzAbTt/beLHz/PncQl3FFcrdjR+L+qnz6zH4j9r5O2P67Erm3cQc7sQsHcSiRG2sIy7AcK0LtWanYe4co6r8i59PcwziCXpwsyI21BmvRGmrPSp+X7tWZ6b9NPMNznMLpTJ7WFmzFNlzDdVl3mL16Mv3rc32H8TpZA2a9D/txADdwU9adZq9HBfvE96TPdRozdTJt7jEcxwk8xhNZ98heMXM0s1+Z53rV/ezPcSbxN6MF14fqZOUqd47/qXi+ufQ1ZviKZ4+zbQEWZnJz1VVwvWrYsvM0zpnGOvunKr7b1HuL9QAPM5k6Z+L83I32f8jNvdvXeOOu6TxdhU3YLNolu2zpWe/iHu6b333C5zD7f0Pn6UbswV4Ra2movbPUfqkaxghemGu/8Nvdp/M05nbjqNDc3H7a00u8kvV7fMCE69X3rfP0ltDZ7XPtfr4m8VHWX/EN312vvm+dp0+Fzm6fa/fz9QM/ZW3PZXv1fes8fSvs94DNLVv2XLbXVN9fMCXs98BccnPvo2ytls+iOZSq3PsoU38AYHasSQ==
+  </data>
+ </layer>
+ <layer name="fleurs" width="30" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYECA90D8gQE7uItDnBLwDkr/BxGM2NW8BeIzUPZfKtn7j0h1d4D4DZXsJBX8GSB7R8HIBdTKXyMVlAJxGRbxqUA8DYqn08DeViBuwyK+FIiXQfFyGtiLC2wF4m1QvJ2O9o6CUTAKBhYAAC3GFd4=
+  </data>
+ </layer>
+</map>

@@ -65,16 +65,16 @@ public class Splash implements Screen {
 	@Override
 	public void render(float arg0) {
 		// TODO Auto-generated method stub
+
 		splashBatch.begin();
 		splash.draw(splashBatch);
 		splashBatch.end();
 		stage.act(arg0);
 		stage.draw();
 
-		// when pressing Key ENTER , change screen
-		if (Gdx.input.isKeyPressed(Keys.ENTER))
-			game.setScreen(game.gameScreen);
 
+		 if (Gdx.input.isKeyPressed(Keys.ENTER)) 
+             game.setScreen((Screen) game.gameTiledScreen);
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class Splash implements Screen {
 		buttonplay.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(game.gameScreen);
+				game.setScreen(game.gameTiledScreen);
 			}
 		});
 
