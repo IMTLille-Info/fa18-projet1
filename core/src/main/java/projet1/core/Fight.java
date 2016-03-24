@@ -1,21 +1,20 @@
 package projet1.core;
-import projet1.core.Creature;
-import projet1.core.Hero;
-import projet1.core.Skill;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
 
 public class Fight {
 
-	private Creature monster;
-	private Hero hero;
-	private Skill skill;
+
 	private final float ratio = 1 / 100;
 	private final float death = 0;
 
-	public boolean whoAttacksFirst() {
+	public boolean whoAttacksFirst(Hero hero, Monster monster) {
 		return monster.getSpeed() <= hero.getSpeed();
 	}
 
-	public void damage() {
+	public void damage(Hero hero, Monster monster, Skill skill) {
 		float atk, def;
 		if (monster.isToken()) {
 			atk = monster.getAtk();
@@ -28,17 +27,27 @@ public class Fight {
 		}
 	}
 
-	public void fight() {
-		monster.setToken(whoAttacksFirst());
+	public void fight(Hero hero, Monster monster, TextButton attack) {
+		final Skill skill = new Skill();
+		monster.setToken(whoAttacksFirst(hero, monster));
 		while ((monster.getLife() > death) || (hero.getLife() > death)) {
-			damage();
 			if (monster.isToken()) {
+				
+				skill.setAtk(0);
+				damage(hero, monster, skill);
 				monster.setToken(false);
 			} else {
+				attack.addListener(new ClickListener(){
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				skill.setAtk(100);
+			}
+		});
 				monster.setToken(true);
 			}
 		}
 
 	}
+
 
 }

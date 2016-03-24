@@ -7,21 +7,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
-import projet1.core.Creature;
-import projet1.core.Hero;
-
+import projet1.core.HealthBar;
 
 public class FightScreen implements Screen {
 
-	//
 	private Sprite sprite;
 	private Texture texture;
 	private SpriteBatch batch;
@@ -31,12 +25,13 @@ public class FightScreen implements Screen {
 	private Skin skin;
 	private Table table;
 	private TextButton attack;
-	
+	private HealthBar healthbar;
+
 	@Override
 	public void render(float arg0) {
-		// TODO Auto-generated method stub
 		batch.begin();
 		sprite.draw(batch);
+		healthbar.draw(batch, 1);
 		batch.end();
 		stage.act(arg0);
 		stage.draw();
@@ -50,12 +45,11 @@ public class FightScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		batch = new SpriteBatch();
+		healthbar = new HealthBar();
 		texture = new Texture("Fight/splash03.jpg");
 		sprite = new Sprite(texture); 
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-				
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage); 
 		buttonTexture = new TextureAtlas("Fight/Skills/attackSkill.pack");
@@ -69,12 +63,12 @@ public class FightScreen implements Screen {
 		style.down =skin.getDrawable("Attack_skill-clicked");
 		style.font = font;
 		attack = new TextButton("",style);
-		attack.addListener(new ClickListener(){
+		/*attack.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				//game.setScreen(game.gameScreen);
 			}
-		});
+		});*/
 		table.add(attack).width(50).height(50).padBottom(75).padLeft(1200);
 		stage.addActor(table);
 

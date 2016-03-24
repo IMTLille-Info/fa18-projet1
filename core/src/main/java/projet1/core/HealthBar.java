@@ -1,65 +1,57 @@
 package projet1.core;
 
-import com.badlogic.gdx.ApplicationListener;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 
-public class HealthBar implements ApplicationListener {
+public class HealthBar {
 
-	private SpriteBatch batch;
 	private TextureAtlas textureAtlas;
 	private Sprite sprite;
-	
-	
 
-	public void create(int bar) {
-		batch = new SpriteBatch();
-		textureAtlas = new TextureAtlas("Fight/HealthBar/healthbar.pack");
-		AtlasRegion region = textureAtlas.findRegion("10.PNG");
+	public void draw(SpriteBatch batch, int bar) {
+		textureAtlas = new TextureAtlas("Fight/HealthBar/healthbar.txt");
+		AtlasRegion region = textureAtlas.findRegion("10");
 		sprite = new Sprite(region);
-		sprite.setRegion(textureAtlas.findRegion(bar+".png"));
-			
+		setTexture(bar);
+		batch.draw(sprite, 10, 15);
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
+	public void setTexture(int bar) {
+
+		if (bar == 10) {
+			sprite.setRegion(textureAtlas.findRegion("10"));
+		}
+		if (bar == 9) {
+			sprite.setRegion(textureAtlas.findRegion("9"));
+		}
+		if (bar == 8) {
+			sprite.setRegion(textureAtlas.findRegion("8"));
+		}
+		if (bar == 7) {
+			sprite.setRegion(textureAtlas.findRegion("7"));
+		}
+		if (bar == 6) {
+			sprite.setRegion(textureAtlas.findRegion("6"));
+		}
+		if (bar == 5) {
+			sprite.setRegion(textureAtlas.findRegion("5"));
+		}
+		if (bar == 4) {
+			sprite.setRegion(textureAtlas.findRegion("4"));
+		}
+		if (bar == 3) {
+			sprite.setRegion(textureAtlas.findRegion("3"));
+		}
+		if (bar == 2) {
+			sprite.setRegion(textureAtlas.findRegion("2"));
+		}
+		if (bar == 1) {
+			sprite.setRegion(textureAtlas.findRegion("1"));
+		}
 
 	}
-
-	@Override
-	public void render() {
-        batch.begin();
-        sprite.draw(batch);
-        batch.end();
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		batch.dispose();
-		textureAtlas.dispose();
-
-	}
-
-	@Override
-	public void create() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }

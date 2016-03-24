@@ -37,6 +37,10 @@ public class Hero extends Creature{
 	 */
 	public Hero(int x, int y){
 		super(x,y, "./Hero_Sprites/HeroSpriteSheet.txt", "0020");
+		life = 1000;
+		weapon.setAtk(100);
+		shield.setDef(100);
+		speed = 10;
 		this.initAnimations();	
 	}
 	
@@ -247,17 +251,5 @@ public class Hero extends Creature{
 	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
-
-	
-
-	
-
-
-	
-
-
-	
-    
-	
 
 }
