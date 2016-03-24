@@ -22,7 +22,6 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 	private TiledMap tiledMap;
 	private TiledMapRenderer tiledMapRenderer;
 	private SpriteBatch spritebatch;
-	private Sprite sprite;
 	private OrthographicCamera camera;
 	private boolean up, right; 	
 	
@@ -72,20 +71,22 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 		int Yhero = this.hero.getY();
 		System.out.println(Xhero + " " + Yhero);
 		
-		if (Xhero>800 && !this.right){
+		if (Xhero>=Gdx.graphics.getWidth() && !this.right){
 			camera.translate(800,0);
+			this.hero.setX(1);
 			this.right=true;
-		}
-		if(Xhero<800 && this.right){
+		}else if(Xhero<1 && this.right){
 			camera.translate(-800,0);
+			this.hero.setX(Gdx.graphics.getWidth()+1);
 			this.right=false;
 		}
-		if(Yhero>800 && !this.up){
+		if(Yhero>=Gdx.graphics.getHeight() && !this.up){
 			camera.translate(0,800);
+			this.hero.setY(1);
 			this.up=true;
-		}
-		if(Yhero<800 && this.up){
+		}else if(Yhero<1 && this.up){
 			camera.translate(0,-800);
+			this.hero.setY(Gdx.graphics.getHeight()+1);
 			this.up=false;
 		}
 		

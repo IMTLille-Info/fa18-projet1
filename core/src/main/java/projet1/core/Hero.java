@@ -198,6 +198,14 @@ public class Hero extends Creature{
 	public int getY(){
 		return this._y;
 	}
+	
+	public void setX(int pos){
+		this._x=pos;
+	}
+	
+	public void setY(int pos){
+		this._y=pos;
+	}
 
 	
 
