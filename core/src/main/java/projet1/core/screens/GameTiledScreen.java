@@ -53,7 +53,7 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 		this.tiledMap = new TmxMapLoader().load("GameScreenV3.tmx");
 		this.tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		
-		this.hero = new Hero(100,100);
+		this.hero = new Hero(45,100);
 		inputKeyboardHero = new InputKeyboardHero(this.hero);
 		Gdx.input.setInputProcessor(inputKeyboardHero);
 		
