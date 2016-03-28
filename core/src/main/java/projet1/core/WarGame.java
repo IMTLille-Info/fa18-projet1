@@ -20,14 +20,6 @@ public class WarGame extends Game {
 		splash = new Splash(this);
 		gameScreen = new GameScreen();
 		setScreen(splash);
-<<<<<<< HEAD
-		//texture = new Texture(Gdx.files.internal("map01.png"));
-		//batch = new SpriteBatch();
-		//hero = new Hero(100,100);
-		//inputKeyboard = new InputKeyboard(this.hero);
-		//Gdx.input.setInputProcessor(inputKeyboard);
-=======
->>>>>>> origin/master
 		System.out.println("create");
 	}
 

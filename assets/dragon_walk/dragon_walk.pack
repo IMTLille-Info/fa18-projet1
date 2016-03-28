@@ -1,0 +1,26 @@
+
+dragon_walk.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+go_up
+  rotate: false
+  xy: 1, 1
+  size: 102, 112
+  orig: 102, 112
+  offset: 0, 0
+  index: -1
+go_right
+  rotate: false
+  xy: 105, 19
+  size: 112, 94
+  orig: 112, 94
+  offset: 0, 0
+  index: -1
+go_down
+  rotate: false
+  xy: 219, 15
+  size: 91, 98
+  orig: 91, 98
+  offset: 0, 0
+  index: -1

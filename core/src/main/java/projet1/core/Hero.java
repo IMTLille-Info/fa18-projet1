@@ -19,7 +19,6 @@ public class Hero extends Creature{
 		this.i=0;
 		this.vitesseMovement = 0;
 		config = new LwjglApplicationConfiguration();
-		
 	}
 	
 	public void draw(SpriteBatch batch){
