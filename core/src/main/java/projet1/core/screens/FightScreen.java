@@ -26,12 +26,14 @@ public class FightScreen implements Screen {
 	private Table table;
 	private TextButton attack;
 	private HealthBar healthbar;
+	private int bar;
+
 
 	@Override
 	public void render(float arg0) {
 		batch.begin();
 		sprite.draw(batch);
-		healthbar.draw(batch, 1);
+		healthbar.draw(batch, bar);
 		batch.end();
 		stage.act(arg0);
 		stage.draw();

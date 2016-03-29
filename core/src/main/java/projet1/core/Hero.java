@@ -3,7 +3,6 @@ package projet1.core;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -31,6 +30,16 @@ public class Hero extends Creature{
 	private Weapon weapon;
 	private Shield shield;
 	
+	//Vie max
+	private float lifeMax;
+
+	public float getLifeMax() {
+		return lifeMax;
+	}
+
+	public void setLifeMax(float lifeMax) {
+		this.lifeMax = lifeMax;
+	}
 
 	/*
 	 * Init Hero Class
