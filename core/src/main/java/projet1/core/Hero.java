@@ -14,6 +14,7 @@ public class Hero extends Creature{
 	private boolean movingRight;
 	private boolean movingUp;
 	private boolean movingDown;
+
 	
 	// variables pour les texture(images du hero)
 	private TextureRegion[] aGoUp,aGoDown,aGoRight,aGoLeft,aGoUpRight,aGoUpLeft,aGoDownRight,aGoDownLeft;

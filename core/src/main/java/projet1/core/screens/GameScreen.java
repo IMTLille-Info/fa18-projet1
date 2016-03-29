@@ -1,10 +1,9 @@
-/**
- * GameScreen : show the map with the hero
- */
+
 package projet1.core.screens;
 
 import projet1.core.Hero;
 import projet1.core.InputKeyboardHero;
+import projet1.core.MonsterDragon;
 
 
 import com.badlogic.gdx.Gdx;
@@ -20,6 +19,7 @@ public class GameScreen implements Screen {
 	private Texture texture;
 	private SpriteBatch batch;
 	private Hero hero ; 
+	private MonsterDragon dragon;
 	private InputKeyboardHero inputKeyboardHero ; 
 	
 	@Override
@@ -46,6 +46,7 @@ public class GameScreen implements Screen {
 		batch.begin();
 		sprite.draw(batch);
 		this.hero.draw(batch);
+		this.dragon.draw(batch);
 		batch.end();
 	}
 
@@ -69,6 +70,7 @@ public class GameScreen implements Screen {
 		sprite = new Sprite(texture); 
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		hero =new Hero(100,100);
+		dragon = new MonsterDragon(365, 370);
 		inputKeyboardHero = new InputKeyboardHero(this.hero);
 		Gdx.input.setInputProcessor(inputKeyboardHero);
 	}

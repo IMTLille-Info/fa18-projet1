@@ -7,7 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 public class InputKeyboardHero implements InputProcessor {
 	
 	private Hero hero;
-	
+
 	public InputKeyboardHero(Hero hero){
 		this.hero = hero;
 	}
