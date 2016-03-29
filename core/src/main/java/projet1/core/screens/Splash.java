@@ -34,7 +34,6 @@ public class Splash implements Screen {
 	private Table table;
 	private TextButton buttonplay;
 	private TextButton buttonexit;
-	private TextButton buttonfight;
 
 	public Splash(WarGame game) {
 		this.game = game;
@@ -126,19 +125,9 @@ public class Splash implements Screen {
 			}
 		});
 
-		buttonfight = new TextButton("FIGHT", style);
-		buttonfight.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				game.setScreen(game.fightScreen);
-			}
-		});
-
 		table.add(buttonplay);
 		table.row();
 		table.add(buttonexit);
-		table.row();
-		table.add(buttonfight);
 		table.debug();
 		stage.addActor(table);
 	}

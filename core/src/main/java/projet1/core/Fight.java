@@ -1,54 +1,44 @@
 package projet1.core;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
 public class Fight {
 
 	private final float ratio = 1 / 100;
-
-	public boolean whoAttacksFirst(Hero hero, MonsterDragon monster) {
-		return monster.getSpeed() <= hero.getSpeed();
+	private float atk, def;
+	private Hero hero;
+	private MonsterDragon monster;
+	
+	public Fight(Hero hero, MonsterDragon monster){
+		this.hero  = hero;
+		this.monster = monster;
 	}
 
-	public void damage(Hero hero, MonsterDragon monster, Skill skill) {
-		float atk, def;
-		if (monster.isToken()) {
+	public void whoAttacksFirst() {
+		monster.token = monster.getSpeed() >= hero.getSpeed();
+		if (monster.token){
+			monsterAttack();
+		}
+	}
+
+	public void monsterAttack() {		
 			atk = monster.getAtk();
 			def = hero.getDef() + hero.getShield().getDef();
 			hero.setLife(hero.getLife() - atk + (def * ratio));
-		} else {
-			atk = hero.getAtk() + hero.getWeapon().getAtk() + skill.getAtk();
+			System.out.println("hero life "+hero.getLife());
+			monster.setToken(false);
+		}
+	public void heroAttack(){
+			atk = hero.getAtk() + hero.getWeapon().getAtk() + hero.skill.getAtk();
 			def = monster.getDef();
 			monster.setLife(monster.getLife() - atk + (def * ratio));
-		}
-	}
-
-	public void fight(Hero hero, MonsterDragon monster, TextButton attack) {
-		final Skill skill = new Skill();
-		monster.setToken(whoAttacksFirst(hero, monster));
-		if (monster.isToken()) {
-			skill.setAtk(0);
-			damage(hero, monster, skill);
-			monster.setToken(false);
-		} else {
-			attack.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					skill.setAtk(100);
-				}
-			});
-			damage(hero, monster, skill);
+			System.out.println("monster life :"+monster.getLife());
 			monster.setToken(true);
 		}
 
-	}
 
-	public int healthbar(Hero hero) {
-		int bar = 10, life, lifeMax;
-		life = (int) hero.getLife();
-		lifeMax = (int) hero.getLifeMax();
+	public int healthbar(float life, float lifeMax) {
+		int bar = 10;
+		life = hero.getLife();
+		lifeMax = hero.getLifeMax();
 		if ((0 <= life) && (life < (0.1 * lifeMax))) {
 			bar = 1;
 		}

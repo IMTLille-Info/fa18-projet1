@@ -42,6 +42,11 @@ public abstract class Creature {
 
 	public abstract void draw(SpriteBatch batch);
 	
+	public void drawFight(SpriteBatch batch, int x, int y){
+		this._sprite.setPosition(x, y);
+		this._sprite.draw(batch);
+	}
+	
 	public float getDef() {
 		return def;
 	}
@@ -100,6 +105,19 @@ public abstract class Creature {
 		this.token = token;
 	}
 
+	public void setX(int pos){
+		this._x=pos;
+	}
 	
+	public void setY(int pos){
+		this._y=pos;
+	}
+	public int getX(){
+		return this._x;
+	}
+	
+	public int getY(){
+		return this._y;
+	}
 	
 }

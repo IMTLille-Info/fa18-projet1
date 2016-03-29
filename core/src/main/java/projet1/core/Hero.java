@@ -33,14 +33,9 @@ public class Hero extends Creature{
 	
 	//Vie max
 	private float lifeMax;
+	public Skill skill;
 
-	public float getLifeMax() {
-		return lifeMax;
-	}
 
-	public void setLifeMax(float lifeMax) {
-		this.lifeMax = lifeMax;
-	}
 
 	/*
 	 * Init Hero Class
@@ -49,10 +44,15 @@ public class Hero extends Creature{
 	 */
 	public Hero(int x, int y){
 		super(x,y, "./Hero_Sprites/HeroSpriteSheet.txt", "0020");
-		//life = 1000;
-		//weapon.setAtk(100);
-		//shield.setDef(100);
-		//speed = 10;
+		this.weapon = new Weapon();
+		this.shield = new Shield();
+		this.skill = new Skill();
+		this.life = 1000;
+		this.lifeMax = 1000;
+		this.weapon.setAtk((float)100);
+		this.shield.setDef((float)100);
+		this.speed = 150;
+		this.skill.setAtk((float)50);
 		this.initAnimations();	
 	}
 	
@@ -216,23 +216,6 @@ public class Hero extends Creature{
 		return shield;
 	}
 
-	public int getX(){
-		return this._x;
-	}
-	
-	public int getY(){
-		return this._y;
-	}
-	
-	public void setX(int pos){
-		this._x=pos;
-	}
-	
-	public void setY(int pos){
-		this._y=pos;
-	}
-
-
 
 	public void setShield(Shield shield) {
 		this.shield = shield;
@@ -245,5 +228,13 @@ public class Hero extends Creature{
 	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
+	public float getLifeMax() {
+		return lifeMax;
+	}
+
+	public void setLifeMax(float lifeMax) {
+		this.lifeMax = lifeMax;
+	}
+
 
 }

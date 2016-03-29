@@ -1,6 +1,5 @@
 package projet1.core;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -13,7 +12,10 @@ public class MonsterDragon extends Creature{
 	static String firstTextureRegion = "go_down";
 	public MonsterDragon(int x, int y){
 		super(x,y,path,firstTextureRegion);
-		this._sprite = new Sprite(region1);
+		//this._sprite = new Sprite(region1);
+		this.life = 750;
+		this.speed = 100;
+		this.atk = 100;
 		
 	}
 	
