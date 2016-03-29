@@ -128,10 +128,10 @@ public class Hero extends Creature{
 		if(movingLeft ){
 			this._x -= 50 * Gdx.graphics.getDeltaTime();
 		}
-		if(movingRight && this._x<Gdx.graphics.getWidth()-50){
+		if(movingRight && this._x<1550){
 			this._x += 100 * Gdx.graphics.getDeltaTime();
 		}
-		if(movingUp && this._y<Gdx.graphics.getHeight()-50){
+		if(movingUp && this._y<1550){
 			this._y += 100 * Gdx.graphics.getDeltaTime();
 		}
 		if(movingDown){
@@ -210,9 +210,28 @@ public class Hero extends Creature{
         movingDown = t;        
     }
 
+
 	public Shield getShield() {
 		return shield;
 	}
+
+	public int getX(){
+		return this._x;
+	}
+	
+	public int getY(){
+		return this._y;
+	}
+	
+	public void setX(int pos){
+		this._x=pos;
+	}
+	
+	public void setY(int pos){
+		this._y=pos;
+	}
+
+
 
 	public void setShield(Shield shield) {
 		this.shield = shield;
