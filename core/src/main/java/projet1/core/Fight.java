@@ -7,13 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class Fight {
 
 	private final float ratio = 1 / 100;
-	private final float death = 0;
 
-	public boolean whoAttacksFirst(Hero hero, Monster monster) {
+	public boolean whoAttacksFirst(Hero hero, MonsterDragon monster) {
 		return monster.getSpeed() <= hero.getSpeed();
 	}
 
-	public void damage(Hero hero, Monster monster, Skill skill) {
+	public void damage(Hero hero, MonsterDragon monster, Skill skill) {
 		float atk, def;
 		if (monster.isToken()) {
 			atk = monster.getAtk();
@@ -26,26 +25,22 @@ public class Fight {
 		}
 	}
 
-	public void fight(Hero hero, Monster monster, TextButton attack) {
+	public void fight(Hero hero, MonsterDragon monster, TextButton attack) {
 		final Skill skill = new Skill();
-		int bar;
 		monster.setToken(whoAttacksFirst(hero, monster));
-		while ((monster.getLife() > death) || (hero.getLife() > death)) {
-			if (monster.isToken()) {
-				skill.setAtk(0);
-				damage(hero, monster, skill);				
-				monster.setToken(false);
-			} else {
-				attack.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						skill.setAtk(100);
-					}
-				});
-				damage(hero, monster, skill);
-				monster.setToken(true);
-			}
-			bar = healthbar(hero);
+		if (monster.isToken()) {
+			skill.setAtk(0);
+			damage(hero, monster, skill);
+			monster.setToken(false);
+		} else {
+			attack.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					skill.setAtk(100);
+				}
+			});
+			damage(hero, monster, skill);
+			monster.setToken(true);
 		}
 
 	}
@@ -57,7 +52,7 @@ public class Fight {
 		if ((0 <= life) && (life < (0.1 * lifeMax))) {
 			bar = 1;
 		}
-		if ((0.1 * lifeMax)<= life && (life < (0.2 * lifeMax))) {
+		if ((0.1 * lifeMax) <= life && (life < (0.2 * lifeMax))) {
 			bar = 2;
 		}
 		if ((0.2 * lifeMax <= life) && (life < (0.3 * lifeMax))) {
@@ -81,7 +76,7 @@ public class Fight {
 		if (((0.8 * lifeMax) <= life) && (life < (0.9 * lifeMax))) {
 			bar = 9;
 		}
-		if (((0.9 * lifeMax) <= life) && (life <  lifeMax)) {
+		if (((0.9 * lifeMax) <= life) && (life < lifeMax)) {
 			bar = 10;
 		}
 		return bar;

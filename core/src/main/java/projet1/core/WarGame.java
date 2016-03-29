@@ -20,8 +20,8 @@ public class WarGame extends Game {
 	@Override
 	public void create () {
 		splash = new Splash(this);
-		fightScreen = new FightScreen();
 		gameTiledScreen = new GameTiledScreen();
+		fightScreen = new FightScreen(gameTiledScreen.hero, gameTiledScreen.monster);
 		setScreen(splash);
 		System.out.println("create");
 	}

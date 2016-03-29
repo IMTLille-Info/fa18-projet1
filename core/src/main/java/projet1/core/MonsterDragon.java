@@ -4,13 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.utils.Array;
 
 public class MonsterDragon extends Creature{
 	TextureRegion monsterRegion;
 	AtlasRegion region1 ;
-	//AtlasRegion region2;
-	private Array<TextureRegion>frames;
+
 	static String path = "./dragon_walk/dragon_walk.pack";
 	static String firstTextureRegion = "go_down";
 	public MonsterDragon(int x, int y){

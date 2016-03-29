@@ -12,7 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+
+import projet1.core.Fight;
 import projet1.core.HealthBar;
+import projet1.core.Hero;
+import projet1.core.MonsterDragon;
 
 public class FightScreen implements Screen {
 
@@ -27,16 +31,30 @@ public class FightScreen implements Screen {
 	private TextButton attack;
 	private HealthBar healthbar;
 	private int bar;
+	private Fight fight;
+	private Hero hero;
+	private MonsterDragon monster;
+	private final float death = 0;
+	
+	public FightScreen(Hero hero, MonsterDragon monster){
+		this.hero = hero;
+		this.monster = monster;
+	}
 
 
 	@Override
 	public void render(float arg0) {
 		batch.begin();
 		sprite.draw(batch);
-		healthbar.draw(batch, bar);
-		batch.end();
 		stage.act(arg0);
 		stage.draw();
+		while ((monster.getLife() > death) || (hero.getLife() > death)) {
+		fight.fight(hero, monster, attack);
+		fight.healthbar(hero);
+		healthbar.draw(batch, bar);
+		}
+		batch.end();
+
 	}
 
 	@Override
@@ -65,12 +83,6 @@ public class FightScreen implements Screen {
 		style.down =skin.getDrawable("Attack_skill-clicked");
 		style.font = font;
 		attack = new TextButton("",style);
-		/*attack.addListener(new ClickListener(){
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				//game.setScreen(game.gameScreen);
-			}
-		});*/
 		table.add(attack).width(50).height(50).padBottom(75).padLeft(1200);
 		stage.addActor(table);
 

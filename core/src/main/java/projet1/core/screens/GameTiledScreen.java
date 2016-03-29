@@ -5,9 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-//import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -15,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import projet1.core.Hero;
 import projet1.core.InputKeyboardHero;
+import projet1.core.MonsterDragon;
 
 public class GameTiledScreen extends ApplicationAdapter implements Screen{
 
@@ -23,10 +22,10 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 	private TiledMapRenderer tiledMapRenderer;
 	private SpriteBatch spritebatch;
 	private OrthographicCamera camera;
-	private boolean up, right; 	
-	
-	private Hero hero ; 
+	private boolean up, right; 
 	private InputKeyboardHero inputKeyboardHero ;
+	public Hero hero ;
+	public MonsterDragon monster;
 	
 
 	@Override
