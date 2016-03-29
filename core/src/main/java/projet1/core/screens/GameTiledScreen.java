@@ -53,7 +53,7 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 		this.tiledMap = new TmxMapLoader().load("GameScreenV3.tmx");
 		this.tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		
-		this.hero = new Hero(45,100);
+		this.hero = new Hero(600,600);
 		inputKeyboardHero = new InputKeyboardHero(this.hero);
 		Gdx.input.setInputProcessor(inputKeyboardHero);
 		
@@ -77,7 +77,7 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 			this.right=true;
 		}else if(Xhero<2 && this.right){
 			camera.translate(-800,0);
-			this.hero.setX(Gdx.graphics.getWidth()-2);
+			this.hero.setX(Gdx.graphics.getWidth()-32);
 			this.right=false;
 		}
 		if(Yhero>Gdx.graphics.getHeight()-2 && !this.up){
@@ -86,7 +86,7 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 			this.up=true;
 		}else if(Yhero<1 && this.up){
 			camera.translate(0,-800);
-			this.hero.setY(Gdx.graphics.getHeight()-2);
+			this.hero.setY(Gdx.graphics.getHeight()-32);
 			this.up=false;
 		}
 		
