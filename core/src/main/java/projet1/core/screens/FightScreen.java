@@ -59,8 +59,8 @@ public class FightScreen implements Screen {
 		batch.begin();
 		sprite.draw(batch);
 		healthbar.draw(batch, fight.healthbar(hero.getLife(), hero.getLifeMax()));
-		hero.drawFight(batch, 100, 100);
-		monster.drawFight(batch, 700, 700);
+		hero.drawFight(batch, 200, 200);
+		monster.drawFight(batch, 400, 400);
 		stage.act(arg0);
 		healthbar.draw(batch, fight.healthbar(hero.getLife(), hero.getLifeMax()));
 		hero.draw(batch);
