@@ -59,7 +59,7 @@ public class FightScreen implements Screen {
 		batch.begin();
 		sprite.draw(batch);
 		healthbar.draw(batch, fight.healthbar(hero.getLife(), hero.getLifeMax()));
-		hero.drawFight(batch, 200, 200);
+		hero.drawFight(batch, 250, 300);
 		monster.drawFight(batch, 400, 400);
 		stage.act(arg0);
 		healthbar.draw(batch, fight.healthbar(hero.getLife(), hero.getLifeMax()));
@@ -79,7 +79,7 @@ public class FightScreen implements Screen {
 		batch = new SpriteBatch();
 		fight = new Fight(hero, monster);
 		healthbar = new HealthBar();
-		texture = new Texture("Fight/splash03.jpg");
+		texture = new Texture("Fight/fightscreen.png");
 		sprite = new Sprite(texture);
 		sprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		stage = new Stage();
@@ -96,7 +96,7 @@ public class FightScreen implements Screen {
 		style.down = skin.getDrawable("Attack_skill-clicked");
 		style.font = font;
 		attack = new TextButton("", style);
-		if (monster.isToken()) {
+		if (monster.isToken() && (monster.getLife()>death)) {
 			attack.setTouchable(Touchable.disabled);
 		} else {
 			attack.setTouchable(Touchable.enabled);

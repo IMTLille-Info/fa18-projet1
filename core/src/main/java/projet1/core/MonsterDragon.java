@@ -13,7 +13,7 @@ public class MonsterDragon extends Creature{
 	public MonsterDragon(int x, int y){
 		super(x,y,path,firstTextureRegion);
 		//this._sprite = new Sprite(region1);
-		this.life = 750;
+		this.life = 1000;
 		this.speed = 100;
 		this.atk = 100;
 		

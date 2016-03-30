@@ -47,8 +47,8 @@ public class Hero extends Creature{
 		this.weapon = new Weapon();
 		this.shield = new Shield();
 		this.skill = new Skill();
-		this.life = 1000;
-		this.lifeMax = 1000;
+		this.life = 750;
+		this.lifeMax = this.life;
 		this.weapon.setAtk((float)100);
 		this.shield.setDef((float)100);
 		this.speed = 150;

@@ -8,8 +8,8 @@ import projet1.core.WarGame;
 public class GameDesktop {
 	public static void main (String[] args) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.height = 800;
-		config.width = 800;
+		config.height = 700;
+		config.width = 700;
 		//config.fullscreen = true;
 		new LwjglApplication(new WarGame(), config);
 	}
