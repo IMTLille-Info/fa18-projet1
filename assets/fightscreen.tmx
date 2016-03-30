@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="tileset.png" width="512" height="512"/>
+ </tileset>
+ <layer name="terrain" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzzZ2BgCABifxrS8UCcQGOalu4f9ceoP0b9MeqPUX+M+mPUH6P+GGz+AAD3gNTM
+  </data>
+ </layer>
+ <layer name="montagne" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzVlTkOAjEMRYe1Z+1Ze9aetWftWQ8LN4AbwA2g4Re2NLI8zkyg4UtPVmI5tieZJAji6QKuxjiurLgbuBtjV072y7iwHuBpjF052S/jwnqBtzF25WS/jEsiV05t7RRIgwyRVSyTA3mK42+krSm/XwEUQYkoK5apgCrFWXsqfTVQBw2iqVimBdoUZ+2p9HVA11g/bAdgSHHWnkof5+iBvsOG+0gi3z58cvj2of33cu7bPrTzJeeS9KHl0M6XnBuBMZgQU8POwFysp50vObcAS7Ai1obdgG2QXDuwBwfiaNgTOHvk+EdFvWG+76mmqLvSukNlHa56ou5K6w6Vdbjqibor47yLXEecenzFdXzzTv9CH49sgIg=
+  </data>
+ </layer>
+ <layer name="dessus" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzVlDESQDAQRR0MJ8AJcFucAJUSDSUaha/QxSYba8SfeY3s5Gf2/+F57qkAJahe9KhBA9oH/rq5HgxgZPpz5hawgo3pbzPH9afmOgsvrmYwKb77IAChwR1Uxtfdu+IsAjFIDDyojFV3X0pBBnIDjycZm0rXBc7ebaXbu0TvqL2fnZgFPCjddeLr/6aUXOiqC/pTntRbpfKk3iqV5x+7dwAjx1eP
+  </data>
+ </layer>
+</map>

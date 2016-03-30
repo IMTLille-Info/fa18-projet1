@@ -47,7 +47,7 @@ public class FightScreen implements Screen {
 	private MonsterDragon monster;
 	private final float death = 0;
 	private WarGame game;
-
+	
 	public FightScreen(Hero hero, MonsterDragon monster, WarGame game) {
 		this.hero = hero;
 		this.monster = monster;

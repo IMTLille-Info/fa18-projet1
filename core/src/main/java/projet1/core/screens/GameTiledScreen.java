@@ -1,6 +1,5 @@
 package projet1.core.screens;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,7 +15,7 @@ import projet1.core.InputKeyboardHero;
 import projet1.core.MonsterDragon;
 import projet1.core.WarGame;
 
-public class GameTiledScreen extends ApplicationAdapter implements Screen{
+public class GameTiledScreen implements Screen{
 
 	
 	private TiledMap tiledMap;
@@ -104,6 +103,30 @@ public class GameTiledScreen extends ApplicationAdapter implements Screen{
 			this.monster.setY(Gdx.graphics.getHeight()-2);
 			this.up=false;
 		}
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
 		
 	}
 	
